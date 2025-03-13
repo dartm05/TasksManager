@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
+    apiKey: process.env.API_KEY,
     authDomain: "task-manager-48639.firebaseapp.com",
     projectId: "task-manager-48639",
     storageBucket: "task-manager-48639.firebasestorage.app",
