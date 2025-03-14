@@ -7,9 +7,9 @@ import * as functions from 'firebase-functions/v1';
 
 const appRoutes = express();
 var cors = require('cors');
-appRoutes.use(cors({ origin: true }));
-appRoutes.use("/api", taskApp);
-appRoutes.use("/api", userApp);
+appRoutes.use(cors());
+appRoutes.use("/", taskApp);
+appRoutes.use("/", userApp);
 
 appRoutes.use(errorHandler);
 
