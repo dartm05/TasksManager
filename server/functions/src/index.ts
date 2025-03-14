@@ -15,3 +15,5 @@ export const firebaseConfig = {
 
 initializeApp(firebaseConfig);
 export const db = getFirestore();
+
+export { api } from './infrastructure/routes';
