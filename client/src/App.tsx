@@ -1,14 +1,12 @@
 import React from 'react';
-import TaskList from './components/tasks/TaskList';
-import TaskForm from './components/tasks/TaskForm';
+import  Header  from './components/layout/Header';
+import { BrowserRouter as Router } from "react-router-dom";
 
 const App: React.FC = () => {
   return (
-    <div>
-      <h1>Task Manager</h1>
-      <TaskForm />
-      <TaskList />
-    </div>
+    <Router>
+      <Header/>
+    </Router>
   );
 };
 
