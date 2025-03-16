@@ -30,13 +30,6 @@ const AuthForm = ({ type, onSubmit }: AuthFormProps) => {
               <Label className="self-start">Email</Label>
               <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" className="w-full" />
               </div>
-              {type === "register" && (
-                <>
-                  <Label>Password</Label>
-                  <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" className="w-full" />
-                </>
-              )}
-
               <div className="flex flex-col items-center space-y-5">
               <Button className="w-3/4 mt-4" onClick={() => onSubmit(email, password)}>
                 {type === "login" ? "Login" : "Register"}
