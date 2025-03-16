@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "components/ui/card";
 import { Button } from "components/ui/button";
 import { Input } from "components/ui/input";
@@ -11,7 +12,15 @@ interface AuthFormProps {
 
 const AuthForm = ({ type, onSubmit }: AuthFormProps) => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleNavigation = () => {
+    if (type === "login") {
+      navigate("/register");
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div className="flex items-center justify-center h-screen p-4 overflow-auto">
@@ -31,7 +40,7 @@ const AuthForm = ({ type, onSubmit }: AuthFormProps) => {
                 <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" className="w-full mb-4" />
               </div>
               <div className="flex flex-col items-center space-y-5">
-                <Button className="w-3/4 mt-4" onClick={() => onSubmit(email, password)}>
+                <Button className="w-3/4 mt-4" onClick={() => onSubmit(email)}>
                   {type === "login" ? "Login" : "Register"}
                 </Button>
                 <div>
@@ -42,9 +51,7 @@ const AuthForm = ({ type, onSubmit }: AuthFormProps) => {
                     <Button
                       variant={"link"}
                       className="ml-2"
-                      onClick={() =>
-                        type === "login" ? onSubmit(email, password) : onSubmit(email)
-                      }
+                      onClick={handleNavigation}
                     >
                       {type === "login" ? "Register" : "Login"}
                     </Button>
