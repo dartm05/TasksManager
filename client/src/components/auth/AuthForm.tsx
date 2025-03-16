@@ -18,9 +18,11 @@ const AuthForm = ({ type, onSubmit }: AuthFormProps) => {
       <Card className="h-3/5 w-3/6 shadow-2xl">
         <CardContent className="p-14 space-y-4 flex flex-col md:flex-row h-full">
           <div className="md:w-1/2 space-y-4 items-center">
-            <div className="flex flex-col items-center space-y-5">
+            <div className="flex flex-col items-center space-y-16">
+                <div className="flex items-center space-x-2">
                 <img src="/assets/check.png" alt="Logo" className="w-8 h-8 mr-2" />
                 <h1 className="text-2xl font-bold text-center">Task Manager</h1>
+                </div>
             <h2 className="text-2xl font-bold self-start">{type === "login" ? "Login" : "Register"}</h2>
             </div>
             <div className="space-y-32 justify-center items-center">
