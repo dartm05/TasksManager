@@ -22,7 +22,8 @@
     "baseUrl": "src",
     "paths": {
       "@/components/*": ["components/*"],
-      "@/lib/*": ["lib/*"]
+      "@/lib/*": ["lib/*"],
+      "react": [ "./node_modules/@types/react" ]
     }
   },
   "include": [
