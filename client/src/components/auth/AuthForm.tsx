@@ -14,9 +14,9 @@ const AuthForm = ({ type, onSubmit }: AuthFormProps) => {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="flex items-center justify-center h-screen p-4">
-      <Card className="h-3/5 w-full max-w-3xl shadow-2xl">
-        <CardContent className="p-6 md:p-14 space-y-4 md:space-x-8 flex flex-col md:flex-row h-full overflow-auto">
+    <div className="flex items-center justify-center h-screen p-4 overflow-auto">
+      <Card className="h-auto w-full max-w-3xl shadow-2xl">
+        <CardContent className="p-6 md:p-14 space-y-4 md:space-x-8 flex flex-col md:flex-row h-full">
           <div className="md:w-1/2 space-y-4 items-center">
             <div className="flex flex-col items-center space-y-16">
               <div className="flex items-center space-x-2">
