@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { Button } from "../ui/button";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { Menu, X } from "lucide-react";
+
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,9 +33,9 @@ const Header: React.FC = () => {
               className="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700"
             >
               {isOpen ? (
-                <FaTimes className="h-6 w-6" />
+                <X className="h-6 w-6" />
               ) : (
-                <FaBars className="h-6 w-6" />
+                <Menu className="h-6 w-6" />
               )}
             </button>
           </div>
