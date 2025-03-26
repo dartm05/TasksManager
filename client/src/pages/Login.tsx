@@ -1,18 +1,11 @@
-import { useContext } from "react";
- 
-import { useNavigate } from "react-router-dom";
-import AuthForm from "components/auth/AuthForm";
+import AuthForm from "../components/auth/AuthForm";
+import { useAuth } from "../components/auth/AuthProvider";
 
 const Login = () => {
- // const { dispatch } = useContext(AuthContext)!;
-  const navigate = useNavigate();
+ 
+  const { login } = useAuth();
 
-  const handleLogin = (email: string) => {
-   // dispatch({ type: "LOGIN", payload: email });
-    navigate("/dashboard");
-  };
-
-  return <AuthForm type="login" onSubmit={handleLogin} />;
+  return <AuthForm type="login" onSubmit={login} />;
 };
 
 export default Login;

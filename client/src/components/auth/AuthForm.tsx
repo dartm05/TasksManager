@@ -4,10 +4,11 @@ import { Card, CardContent } from "components/ui/card";
 import { Button } from "components/ui/button";
 import { Input } from "components/ui/input";
 import { Label } from "components/ui/label";
+ 
 
 interface AuthFormProps {
   type: "login" | "register";
-  onSubmit: (email: string, password?: string) => void;
+  onSubmit: (email: string) => void;
 }
 
 const AuthForm = ({ type, onSubmit }: AuthFormProps) => {
@@ -16,7 +17,7 @@ const AuthForm = ({ type, onSubmit }: AuthFormProps) => {
 
   const handleNavigation = () => {
     if (type === "login") {
-      navigate("/register");
+       navigate("/register");
     } else {
       navigate("/login");
     }
