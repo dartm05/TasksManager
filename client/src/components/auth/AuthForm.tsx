@@ -23,6 +23,12 @@ const AuthForm = ({ type, onSubmit }: AuthFormProps) => {
     }
   };
 
+  const handleSubmit = async () => {
+    if (email) {
+      onSubmit(email);
+    }
+  };
+
   return (
     <div className="flex items-center justify-center h-screen p-4 overflow-auto">
       <Card className="h-auto w-full max-w-3xl shadow-2xl">
@@ -41,7 +47,7 @@ const AuthForm = ({ type, onSubmit }: AuthFormProps) => {
                 <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" className="w-full mb-4" />
               </div>
               <div className="flex flex-col items-center space-y-5">
-                <Button className="w-3/4 mt-4" onClick={() => onSubmit(email)}>
+                <Button className="w-3/4 mt-4" onClick={handleSubmit}>
                   {type === "login" ? "Login" : "Register"}
                 </Button>
                 <div>
