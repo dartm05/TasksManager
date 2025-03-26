@@ -13,3 +13,14 @@ export const loginUser = async (email: string): Promise<User> => {
     throw new Error("Invalid credentials or server error.");
   }
 };
+
+export const registerUser = async (email: string): Promise<User> => {
+  try {
+    const response = await axios.post(API_BASE_URL, { email });
+    console.log("Register response:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Register error:", error);
+    throw new Error("Server error.");
+  }
+}

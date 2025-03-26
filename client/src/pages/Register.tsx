@@ -1,14 +1,11 @@
-import { useNavigate } from "react-router-dom";
 import AuthForm from "components/auth/AuthForm";
+import useRedirectIfAuthenticated from "hooks/useRedirect";
+import { useAuth } from "../components/auth/AuthProvider";
 
 const Register = () => {
-  const navigate = useNavigate();
-
-  const handleRegister = (email: string) => {
-    navigate("/login");
-  };
-
-  return <AuthForm type="register" onSubmit={handleRegister} />;
+  const { register } = useAuth();
+  useRedirectIfAuthenticated();
+  return <AuthForm type="register" onSubmit={register} />;
 };
 
 export default Register;
