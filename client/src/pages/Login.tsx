@@ -1,19 +1,10 @@
-import { useEffect } from "react";
 import AuthForm from "../components/auth/AuthForm";
+import useRedirectIfAuthenticated from "hooks/useRedirect";
 import { useAuth } from "../components/auth/AuthProvider";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { login, user } = useAuth();
-  const navigate = useNavigate();
-  
-  useEffect(() => {
-    if (user) {
-      navigate("/dashboard");
-    }
-  }
-  , [user, navigate]);
-  
+  const { login } = useAuth();
+  useRedirectIfAuthenticated();
   return <AuthForm type="login" onSubmit={login} />;
 };
 
