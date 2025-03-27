@@ -1,9 +1,10 @@
 import React from 'react';
+import TaskForm from './TaskForm';
 
 const TaskList: React.FC = () => {
   return (
     <div>
-      {/* TODO: Implement task list */}
+      <TaskForm/>
     </div>
   );
 };
