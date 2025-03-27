@@ -1,6 +1,6 @@
 import AuthForm from "components/auth/AuthForm";
 import useRedirectIfAuthenticated from "hooks/useRedirect";
-import { useAuth } from "../components/auth/AuthProvider";
+import { useAuth } from "../context/AuthProvider";
 
 const Register = () => {
   const { register } = useAuth();

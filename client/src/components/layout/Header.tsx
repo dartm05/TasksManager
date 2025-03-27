@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
-import { useAuth } from "../auth/AuthProvider";
+import { useAuth } from "../../context/AuthProvider";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

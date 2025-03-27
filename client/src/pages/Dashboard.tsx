@@ -1,6 +1,6 @@
 import { Button } from "components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "components/auth/AuthProvider";
+import { useAuth } from "../context/AuthProvider";
 
 const Dashboard = () => {
  

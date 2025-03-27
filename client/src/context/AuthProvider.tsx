@@ -1,4 +1,4 @@
-import { User } from '../../utils/types';
+import { User } from '../utils/types';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { loginUser, registerUser } from 'api/authService';
 
