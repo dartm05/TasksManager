@@ -10,9 +10,10 @@ type Task = {
 
 interface TaskItemProps {
   task: Task;
+  handleDelete: (id: string) => void;
 }
 
-const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
+const TaskItem: React.FC<TaskItemProps> = ({ task, handleDelete }) => {
   const { editTask, removeTask } = useTasks();
   const [isEditing, setIsEditing] = useState(false);
   const [editedTask, setEditedTask] = useState({ title: task.title, description: task.description });
@@ -35,14 +36,10 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
     setIsEditing(false);
   };
 
-  const handleDelete = async () => {
-    await removeTask(task.id);
-  };
-
   return (
     <div className="relative border-2 border-yellow-300 bg-yellow-50 shadow-lg rounded-lg p-4 space-y-4">
       <button
-        onClick={handleDelete}
+        onClick={() => handleDelete(task.id)}
         className="absolute -top-2 -right-2 text-white hover:text-black transition"
       >
         <CircleX fill="red" className="w-7 h-7" />
