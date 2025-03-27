@@ -18,7 +18,7 @@ export const createTask = async (
 
 export const updateTask = async (
   id: string,
-  updates: { title?: string; description?: string; completed?: boolean },
+  updates: { title?: string; description?: string },
   userId: string
 ): Promise<Task> => {
   const response = await axios.put(`${API_URL}/${userId}/tasks/${id}`, updates);
