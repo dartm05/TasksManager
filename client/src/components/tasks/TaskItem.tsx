@@ -14,7 +14,7 @@ interface TaskItemProps {
 }
 
 const TaskItem: React.FC<TaskItemProps> = ({ task, handleDelete }) => {
-  const { editTask, removeTask } = useTasks();
+  const { editTask } = useTasks();
   const [isEditing, setIsEditing] = useState(false);
   const [editedTask, setEditedTask] = useState({ title: task.title, description: task.description });
 

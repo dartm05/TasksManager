@@ -1,6 +1,5 @@
 import React from "react";
 import { useTasks } from "../../hooks/useTasks";
-import { useAuth } from "../../context/AuthProvider";
 import TaskItem from "./TaskItem";
 
 const TaskList: React.FC = () => {
