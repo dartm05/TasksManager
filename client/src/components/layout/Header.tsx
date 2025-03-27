@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { Button } from "../ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
 import { useAuth } from "../../context/AuthProvider";
 
 const Header: React.FC = () => {
@@ -38,7 +38,7 @@ const Header: React.FC = () => {
               </>
             ) : (
               <Button onClick={logout} className="justify-self-end px-2 py-1">
-                Logout
+               <LogOut/> Logout
               </Button>
             )}
           </div>
@@ -58,7 +58,7 @@ const Header: React.FC = () => {
       </header>
       {isOpen && (
         <div className="md:hidden">
-          <div className="flex flex-col items-center space-y-2">
+          <div className="flex flex-col items-center space-y-2 p-6">
             {user && (
               <Link
                 to="/"
@@ -80,7 +80,7 @@ const Header: React.FC = () => {
               </>
             ) : (
               <Button onClick={logout} className="justify-self-end px-2 py-1">
-                Logout
+                <LogOut/> Logout
               </Button>
             )}
           </div>
