@@ -28,7 +28,7 @@ export class TaskController {
   ): Promise<void> {
     const taskService = serviceInjection();
     const tasks = (await taskService.findAll(userId)).sort((a, b) => {
-      return a.createdAt > b.createdAt ? 1 : -1;
+      return a.createdAt! > b.createdAt! ? 1 : -1;
     });
     res.json(tasks);
   }
