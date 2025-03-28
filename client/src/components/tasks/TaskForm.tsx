@@ -1,25 +1,29 @@
 import React, { useState } from "react";
-interface TaskFormProps {
-  onClose: () => void;  
-  addTask: (task: { title: string; description: string }) => Promise<void>;
-}
+import { TaskFormProps } from "../../utils/types";
+import FormField from "./FormField";
 
 const TaskForm: React.FC<TaskFormProps> = ({ onClose, addTask }) => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [formData, setFormData] = useState({ title: "", description: "" });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await addTask({ title, description });
-    onClose();  
-    setTitle("");
-    setDescription("");
+    await addTask(formData);
+    handleReset();
+    onClose();
+  };
+
+  const handleReset = () => {
+    setFormData({ title: "", description: "" });
   };
 
   const handleCancel = () => {
-    onClose();  
-    setTitle("");
-    setDescription("");
+    handleReset();
+    onClose();
   };
 
   return (
@@ -29,32 +33,24 @@ const TaskForm: React.FC<TaskFormProps> = ({ onClose, addTask }) => {
         className="bg-yellow-50 border-2 border-yellow-300 shadow-lg rounded-lg p-6 w-full max-w-md mx-auto mt-10 font-handwritten"
       >
         <h1 className="text-2xl font-bold text-center mb-4 text-yellow-800">New Task</h1>
-        <div className="mb-4">
-          <label htmlFor="title" className="block text-yellow-700 font-medium mb-2">
-            Title
-          </label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Enter task title"
-            className="w-full p-2 border border-yellow-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="description" className="block text-yellow-700 font-medium mb-2">
-            Description
-          </label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Enter task description"
-            rows={5}
-            className="w-full p-2 border border-yellow-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
-          ></textarea>
-        </div>
+
+        <FormField
+          id="title"
+          label="Title"
+          value={formData.title}
+          onChange={handleChange}
+          placeholder="Enter task title"
+        />
+ 
+        <FormField
+          id="description"
+          label="Description"
+          value={formData.description}
+          onChange={handleChange}
+          placeholder="Enter task description"
+          isTextArea
+        />
+
         <div className="flex justify-between mt-4 gap-5">
           <button
             type="submit"
