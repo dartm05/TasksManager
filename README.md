@@ -120,7 +120,10 @@ The backend is deployed on Firebase Cloud Functions, and you can run it locally 
 - You can test the React components by running the development server. All updates will be reflected in real-time.
 
 To test components, you can also use tools like Jest and React Testing Library.
-
+```bash
+cd functions
+npm test
+```
 ---
 
 ## Contributing
