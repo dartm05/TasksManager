@@ -49,7 +49,7 @@ The backend is deployed on Firebase Cloud Functions, and you can run it locally 
     ```
 
 4. **Set up Environment Variables**:
-    - Create a `.env` file in the `functions` directory with your environment variables, like API keys, URLs, etc.
+    - Create a `.env` file in the `functions` directory with your environment variables, like API keys, URLs, etc. Also make sure to replace the IDs for your project in the firebaseConfig in index.ts.
     
     Example:
     ```
