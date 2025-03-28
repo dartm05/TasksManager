@@ -3,11 +3,8 @@ import { useTasks } from "../../hooks/useTasks";
 import TaskItem from "./TaskItem";
 
 const TaskList: React.FC = () => {
-  const { tasks, removeTask ,loading, error } = useTasks();
-
-  if (loading) return <p>Loading tasks...</p>;
-  if (error) return <p className="text-red-500">{error}</p>;
-  if (!tasks.length) return <p>No tasks found.</p>;
+  
+  const { tasks, removeTask  } = useTasks();
 
   const handleDeleteTask = async (id: string) => {
     await removeTask(id);
