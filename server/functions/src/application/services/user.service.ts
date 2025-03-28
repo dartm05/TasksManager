@@ -1,5 +1,5 @@
-import { IUserUseCase } from "../../domain/usecases/user.usecase";
-import { IUser } from "../../domain/models/user";
+import {IUserUseCase} from "../../domain/usecases/user.usecase";
+import {IUser} from "../../domain/models/user";
 
 export class UserService implements IUserUseCase {
   constructor(private userDrivenAdapter: IUserUseCase) {}

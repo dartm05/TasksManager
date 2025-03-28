@@ -1,5 +1,5 @@
-import { ITask } from "../../domain/models/task";
-import { ITaskUseCase } from "../../domain/usecases/task.usecase";
+import {ITask} from "../../domain/models/task";
+import {ITaskUseCase} from "../../domain/usecases/task.usecase";
 
 export class TaskService implements ITaskUseCase {
   constructor(private taskDrivenAdapter: ITaskUseCase) {}

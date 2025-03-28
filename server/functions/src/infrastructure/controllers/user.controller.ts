@@ -1,15 +1,15 @@
-import { Request, Response } from "express";
-import { Error } from "../../domain/errors/base-error";
-import { UserService } from "../../application/services/user.service";
-import { IUserUseCase } from "../../domain/usecases/user.usecase";
-import { UserDrivenAdapter } from "../driven-adapters/user.driven.adapter";
- 
- 
+import {Request, Response, NextFunction} from "express";
+import {Error} from "../../domain/errors/base-error";
+import {UserService} from "../../application/services/user.service";
+import {IUserUseCase} from "../../domain/usecases/user.usecase";
+import {UserDrivenAdapter} from "../driven-adapters/user.driven.adapter";
+
+
 export class UserController {
   static async create(
-    { body }: Request,
+    {body}: Request,
     res: Response,
-    next: any,
+    next: NextFunction,
     serviceInjection: () => IUserUseCase
   ): Promise<void> {
     const userService = serviceInjection();
@@ -20,9 +20,9 @@ export class UserController {
   }
 
   static async findOne(
-    { params: { email } }: Request,
+    {params: {email}}: Request,
     res: Response,
-    next: any,
+    next: NextFunction,
     serviceInjection: () => IUserUseCase
   ): Promise<void> {
     const userService = serviceInjection();

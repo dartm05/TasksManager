@@ -1,30 +1,29 @@
 
-import { Request, Response } from "express";
-import { ITaskUseCase } from "../../domain/usecases/task.usecase";
-import { TaskService } from "../../application/services/task.service";
-import { TaskDrivenAdapter } from "../driven-adapters/task.driven.adapter";
-import { Error } from "../../domain/errors/base-error";
+import {Request, Response, NextFunction} from "express";
+import {ITaskUseCase} from "../../domain/usecases/task.usecase";
+import {TaskService} from "../../application/services/task.service";
+import {TaskDrivenAdapter} from "../driven-adapters/task.driven.adapter";
+import {Error} from "../../domain/errors/base-error";
 
 
 export class TaskController {
   static async create(
-    { params: { userId }, body }: Request<{ userId: string }>,
+    {params: {userId}, body}: Request<{ userId: string }>,
     res: Response,
-    next: any,
+    next: NextFunction,
     serviceInjection: () => ITaskUseCase
   ): Promise<void> {
     const taskService = serviceInjection();
     const createdAt = new Date().toISOString();
-    body = { ...body, createdAt: createdAt };
+    body = {...body, createdAt: createdAt};
     const success = await taskService.create(userId, body);
     if (!success) return next(new Error(500, "Task not created", "The Task could not be created", "TaskNotCreatedError"));
     res.json(success);
   }
 
   static async findAll(
-    { params: { userId } }: Request<{ userId: string }>,
+    {params: {userId}}: Request<{ userId: string }>,
     res: Response,
-    next: any,
     serviceInjection: () => ITaskUseCase
   ): Promise<void> {
     const taskService = serviceInjection();
@@ -35,9 +34,9 @@ export class TaskController {
   }
 
   static async findOne(
-    { params: { userId, id } }: Request<{ userId: string; id: string }>,
+    {params: {userId, id}}: Request<{ userId: string; id: string }>,
     res: Response,
-    next: any,
+    next: NextFunction,
     serviceInjection: () => ITaskUseCase
   ): Promise<void> {
     const taskService = serviceInjection();
@@ -47,9 +46,9 @@ export class TaskController {
   }
 
   static async update(
-    { params: { userId, id }, body }: Request<{ userId: string; id: string }>,
+    {params: {userId, id}, body}: Request<{ userId: string; id: string }>,
     res: Response,
-    next: any,
+    next: NextFunction,
     serviceInjection: () => ITaskUseCase
   ): Promise<void> {
     const taskService = serviceInjection();
@@ -59,9 +58,9 @@ export class TaskController {
   }
 
   static async remove(
-    { params: { userId, id } }: Request<{ userId: string; id: string }>,
+    {params: {userId, id}}: Request<{ userId: string; id: string }>,
     res: Response,
-    next: any,
+    next: NextFunction,
     serviceInjection: () => ITaskUseCase
   ): Promise<void> {
     const taskService = serviceInjection();

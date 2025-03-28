@@ -1,4 +1,4 @@
-import { ITask } from "../models/task";
+import {ITask} from "../models/task";
 
 export interface ITaskUseCase {
   create(userId: string, task: ITask): Promise<ITask | undefined>;
