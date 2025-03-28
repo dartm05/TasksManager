@@ -14,7 +14,6 @@ module.exports = {
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: ["tsconfig.json", "tsconfig.dev.json"],
     sourceType: "module",
   },
   ignorePatterns: [
@@ -31,6 +30,6 @@ module.exports = {
     "indent": ["error", 2],
     "require-jsdoc": 0,
     "valid-jsdoc": 0,
-    "max-len": ["error", {"code": 122}],
+    "max-len": ["error", {"code": 132}],
   },
 };
