@@ -1,5 +1,5 @@
 import React from "react";
-import TaskItem from "./TaskItem";
+import TaskItem from "./TaskItem/TaskItem";
 import { TaskListProps } from "../../utils/types";
 
 const TaskList: React.FC<TaskListProps> = ({ tasks, handleDeleteTask }) => { 

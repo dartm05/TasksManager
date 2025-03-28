@@ -1,6 +1,6 @@
 import { Button } from "components/ui/button";
 import TaskList from "../components/tasks/TaskList";
-import TaskForm from "../components/tasks/TaskForm";
+import TaskForm from "../components/tasks/TaskForm/TaskForm";
 import { PlusCircle } from "lucide-react";
 import { useState } from "react";
 import { useTasks } from "../hooks/useTasks";
