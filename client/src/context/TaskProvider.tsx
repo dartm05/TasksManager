@@ -1,15 +1,8 @@
 import { createContext, useContext, useState } from 'react';
 import { Task } from '../utils/types';
+import { TaskContextType } from '../utils/types';
 
-type TaskContext = {
-    tasks: Task[];
-    createTask: (task: Task) => void;
-    updateTask: (task: Task) => void;
-    deleteTask: (id: string) => void;
-};
-
-const TaskContext = createContext<TaskContext|undefined>(undefined);
-
+const TaskContext = createContext<TaskContextType|undefined>(undefined);
 
 export default function TaskProvider({ children }: { children: React.ReactNode }) {
     const [tasks, setTasks] = useState<Task[]>([]);

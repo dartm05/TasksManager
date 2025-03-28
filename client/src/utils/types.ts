@@ -30,3 +30,51 @@ export interface FormFieldProps {
   placeholder: string;
   isTextArea?: boolean;
 }
+
+// TaskList.tsx
+export interface TaskListProps {
+  tasks: Task[];
+  handleDeleteTask: (id: string) => void;
+}
+
+//TaskItem.tsx
+export interface TaskItemProps {
+    task: Task;
+    handleDelete: (id: string) => void;
+}
+
+// TaskProvider.tsx
+export type TaskContextType = {
+    tasks: Task[];
+    createTask: (task: Task) => void;
+    updateTask: (task: Task) => void;
+    deleteTask: (id: string) => void;
+};
+
+// AuthProvider.tsx
+export type AuthContextType = {
+    user?: User | null;
+    register: (email: string) => Promise<void>;
+    login: (email: string) => Promise<void>;
+    logout: () => Promise<void>;
+};
+
+// LoadingProvider.tsx
+export type LoadingContextType = {
+  show: () => void;
+  hide: () => void;
+};
+
+//ModalProvider.tsx
+export type ModalContextType = {
+  show: (message: string) => void;
+  hide: () => void;
+};
+
+// ErrorDialog.tsx
+export interface ErrorDialogProps {
+    error: string | null;
+    clearError: () => void;
+  }
+
+

@@ -1,11 +1,8 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "../../components/ui/dialog";
 import { Button } from "../../components/ui/button";
 import { AlertTriangle } from "lucide-react";
+import { ErrorDialogProps } from "utils/types";
 
-interface ErrorDialogProps {
-  error: string | null;
-  clearError: () => void;
-}
 
 const ErrorDialog: React.FC<ErrorDialogProps> = ({ error, clearError }) => {
   return (

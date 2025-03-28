@@ -1,10 +1,6 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import { Spinner } from "../components/shared/Spinner";   
-
-type LoadingContextType = {
-  show: () => void;
-  hide: () => void;
-};
+import { LoadingContextType } from "../utils/types";
 
 const LoadingContext = createContext<LoadingContextType | undefined>(undefined);
 

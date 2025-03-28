@@ -1,10 +1,6 @@
 import ErrorDialog from "../components/shared/ErrorDialog";
 import { createContext, useContext, useState, ReactNode, useRef, useEffect } from "react";
-
-type ModalContextType = {
-  show: (message: string) => void;
-  hide: () => void;
-};
+import { ModalContextType } from "../utils/types";
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 

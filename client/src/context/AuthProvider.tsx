@@ -1,15 +1,9 @@
 import { User } from '../utils/types';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { loginUser, registerUser } from 'api/authService';
+import { AuthContextType } from '../utils/types';
 
-type AuthContext = {
-    user?: User | null;
-    register: (email: string) => Promise<void>;
-    login: (email: string) => Promise<void>;
-    logout: () => Promise<void>;
-};
-
-const AuthContext = createContext<AuthContext|undefined>(undefined);
+const AuthContext = createContext<AuthContextType|undefined>(undefined);
 
 
 export default function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -33,17 +27,17 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
             setUser(response);
         }
         catch (error) {
-            console.error("Login error:", error);
+            
         }
     };
-
+    
     const register = async (email: string) => {
         try {
             const response = await registerUser(email);
             setUser(response);
         }
         catch (error) {
-            console.error("Register error:", error);
+            
         }
     };
     

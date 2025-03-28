@@ -1,17 +1,7 @@
 import React, { useState } from "react";
 import { useTasks } from "../../hooks/useTasks";
 import { CircleX, Pencil } from "lucide-react";
-
-type Task = {
-  id: string;
-  title: string;
-  description: string;
-};
-
-interface TaskItemProps {
-  task: Task;
-  handleDelete: (id: string) => void;
-}
+import { TaskItemProps } from "../../utils/types";
 
 const TaskItem: React.FC<TaskItemProps> = ({ task, handleDelete }) => {
   const { editTask } = useTasks();
