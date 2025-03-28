@@ -52,18 +52,19 @@ const TaskForm: React.FC<TaskFormProps> = ({ onClose, addTask }) => {
         />
 
         <div className="flex justify-between mt-4 gap-5">
-          <button
-            type="submit"
-            className="w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-2xl hover:bg-yellow-600 transition"
-          >
-            Save Task
-          </button>
-          <button
+        <button
             type="button"
             onClick={handleCancel}
             className="w-full bg-gray-500 text-white font-bold py-2 px-4 rounded-2xl hover:bg-gray-600 transition"
           >
             Cancel
+          </button>
+          
+          <button
+            type="submit"
+            className="w-full bg-yellow-500 text-white font-bold py-2 px-4 rounded-2xl hover:bg-yellow-600 transition"
+          >
+            Save Task
           </button>
         </div>
       </form>
