@@ -24,7 +24,7 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
       {children}
       {isLoading && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <Spinner size="lg" />
+          <Spinner/>
         </div>
       )}
     </LoadingContext.Provider>
