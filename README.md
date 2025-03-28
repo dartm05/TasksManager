@@ -4,6 +4,7 @@
 
 **Task Manager** is a full-stack application designed for managing tasks. It includes a web client built with React and a backend server built with Firebase Cloud Functions. The app allows users to create, read, update, and delete tasks, making it a useful tool for task management.
 
+Avaiable: https://task-manager-48639.web.app/
 ---
 
 ## Requirements
