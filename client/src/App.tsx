@@ -8,22 +8,29 @@ import TaskProvider from 'context/TaskProvider';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { ModalProvider } from 'context/ModalProvider';
 import { LoadingProvider } from 'context/LoadingProvider';
+import { useAuth } from 'context/AuthProvider';  
 
 const App: React.FC = () => {
+  const { user } = useAuth();  
+
   return (
     <Router>
       <Header />
       <LoadingProvider>
-      <ModalProvider>
-      <TaskProvider>
-      <Routes>
-        <Route path="/login" element={<Login  />} />
-        <Route path="/register" element={<Register  />} />
-        <Route path="/dashboard" element={<ProtectedRoute component={Dashboard} />} />
-        <Route path="*" element={<Navigate to="/dashboard" />} />
-      </Routes>
-      </TaskProvider>
-      </ModalProvider>
+        <ModalProvider>
+          <TaskProvider>
+            <Routes>
+              <Route
+                path="/"
+                element={<Navigate to={user ? "/dashboard" : "/login"} />}
+              />
+              <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
+              <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register />} />
+              <Route path="/dashboard" element={<ProtectedRoute component={Dashboard} />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </TaskProvider>
+        </ModalProvider>
       </LoadingProvider>
     </Router>
   );

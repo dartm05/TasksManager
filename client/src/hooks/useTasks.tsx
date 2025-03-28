@@ -27,7 +27,6 @@ export function useTasks() {
     try {
       const newTask = await createTask(task, userId);
       setTasks((prev) => [...prev, newTask]);
-      await fetchTasks();
     } catch (err) {}
   };
   
