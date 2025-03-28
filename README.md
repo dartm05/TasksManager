@@ -35,11 +35,12 @@ The backend is deployed on Firebase Cloud Functions, and you can run it locally 
     ```
 
 2. **Set up Firebase Project**:
-    - Go to [Firebase Console](https://console.firebase.google.com/) and create a project if you haven’t already.
+    - Go to [Firebase Console](https://console.firebase.google.com/) and create a project if you haven’t already and activate the services (Functions and Firestore).
     - Initialize Firebase in your project directory by running:
     ```bash
     firebase init
     ```
+    - Select Firestore and Cloud Functions
 
 3. **Install Dependencies**:
     - Navigate to the `functions` folder and install dependencies:
@@ -59,8 +60,10 @@ The backend is deployed on Firebase Cloud Functions, and you can run it locally 
 5. **Running the Functions Locally**:
     - Start the Firebase Functions emulator:
     ```bash
-    firebase emulators:start --only functions
+    cd functions
+    npm run serve
     ```
+    - Your server should now be running at [http://127.0.0.1:5001/{your-project-id}/us-central1/api](http://127.0.0.1:5001/{your-project-id}/us-central1/api)
 
 6. **Deploy the Functions to Firebase**:
     If you want to deploy the functions to Firebase, run:
@@ -91,7 +94,7 @@ The backend is deployed on Firebase Cloud Functions, and you can run it locally 
     
     Example:
     ```
-    REACT_APP_API_URL=http://localhost:5001/task-manager-48639/us-central1/api
+    REACT_APP_API_URL=http://localhost:5001/{your-project-id}/us-central1/api
     ```
 
 ### 4. **Run the Client Locally**:
@@ -115,13 +118,19 @@ The backend is deployed on Firebase Cloud Functions, and you can run it locally 
 
 ### Backend (Server-side)
 - Firebase Functions provide testing capabilities using the Firebase Emulator. You can test the API locally by interacting with it via the client or directly with Postman.
+To test components, you can also use tools like Jest and Supertest.
+
+```bash
+cd functions
+npm test
+```
 
 ### Frontend (Client-side)
 - You can test the React components by running the development server. All updates will be reflected in real-time.
 
 To test components, you can also use tools like Jest and React Testing Library.
 ```bash
-cd functions
+cd client
 npm test
 ```
 ---
