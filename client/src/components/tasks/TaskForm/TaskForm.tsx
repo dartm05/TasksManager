@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { TaskFormProps } from "../../utils/types";
-import FormField from "./FormField";
+import { TaskFormProps } from "../../../utils/types";
+import FormField from "../TaskForm/FormField";
 
 const TaskForm: React.FC<TaskFormProps> = ({ onClose, addTask }) => {
   const [formData, setFormData] = useState({ title: "", description: "" });
