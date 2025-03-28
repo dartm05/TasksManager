@@ -57,7 +57,19 @@ const Dashboard: React.FC = () => {
 
         {isAddingTask && <TaskForm onClose={handleCloseModal} addTask={addTask} />}
 
-        <TaskList tasks={tasks} handleDeleteTask={removeTask} />
+        {tasks.length === 0 ? (
+          <div className="flex flex-col items-center justify-center mt-10 h-4/6">
+            <img
+              src="assets/empty.svg" 
+              alt="No tasks available"
+              className="w-64 h-64"
+            />
+            <p className="text-gray-600 mt-4 font-bold text-2xl">Oops!</p>
+            <p className="text-gray-600 mt-2 font-bold text-xl">No tasks available</p>
+          </div>
+        ) : (
+          <TaskList tasks={tasks} handleDeleteTask={removeTask} />
+        )}
       </div>
     </div>
   );
