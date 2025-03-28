@@ -7,11 +7,13 @@ import Dashboard from 'pages/Dashboard';
 import TaskProvider from 'context/TaskProvider';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { ModalProvider } from 'context/ModalProvider';
+import { LoadingProvider } from 'context/LoadingProvider';
 
 const App: React.FC = () => {
   return (
     <Router>
       <Header />
+      <LoadingProvider>
       <ModalProvider>
       <TaskProvider>
       <Routes>
@@ -22,6 +24,7 @@ const App: React.FC = () => {
       </Routes>
       </TaskProvider>
       </ModalProvider>
+      </LoadingProvider>
     </Router>
   );
 };
