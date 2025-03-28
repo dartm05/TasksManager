@@ -1,19 +1,34 @@
 import { Button } from "components/ui/button";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthProvider";
 import TaskList from "../components/tasks/TaskList";
+import TaskForm from "../components/tasks/TaskForm";
 import { PlusCircle } from "lucide-react";
+import { useState } from "react";
+import { useTasks } from "../hooks/useTasks";
 
 const Dashboard: React.FC = () => {
-  const navigate = useNavigate();
-  const { user } = useAuth();
+  const [isAddingTask, setIsAddingTask] = useState(false);
+  const { addTask, tasks , removeTask } = useTasks();
 
   const handleAddTask = () => {
-    navigate("/add-task");
+    setIsAddingTask(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsAddingTask(false);
   };
 
   return (
     <div className="relative flex flex-col items-center justify-start h-screen w-screen overflow-auto bg-yellow-50 bg-[repeating-linear-gradient(transparent_0_19px,_#facc15_20px)]">
+      {isAddingTask && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-10"
+          onClick={(e) => {
+            e.stopPropagation();
+            handleCloseModal();
+          }}
+        />
+      )}
+
       <div className="absolute left-0 top-0 h-full w-16 bg-gray-200">
         <div className="flex flex-col items-center justify-center h-full space-y-4">
           {[...Array(10)].map((_, index) => (
@@ -36,7 +51,9 @@ const Dashboard: React.FC = () => {
             <span className="hidden sm:inline ml-2">Add Task</span>
           </Button>
         </div>
-        <TaskList />
+
+        {isAddingTask && <TaskForm onClose={handleCloseModal} addTask={addTask}/>} 
+        <TaskList tasks={tasks} handleDeleteTask={removeTask} />
       </div>
     </div>
   );
