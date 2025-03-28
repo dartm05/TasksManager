@@ -34,7 +34,6 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
         }
         catch (error) {
             console.error("Login error:", error);
-            throw new Error("Invalid credentials or server error.");
         }
     };
 
@@ -45,7 +44,6 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
         }
         catch (error) {
             console.error("Register error:", error);
-            throw new Error("Server error.");
         }
     };
     
