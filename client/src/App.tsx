@@ -6,11 +6,13 @@ import Register from 'pages/Register';
 import Dashboard from 'pages/Dashboard';
 import TaskProvider from 'context/TaskProvider';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import { ModalProvider } from 'context/ModalProvider';
 
 const App: React.FC = () => {
   return (
     <Router>
       <Header />
+      <ModalProvider>
       <TaskProvider>
       <Routes>
         <Route path="/login" element={<Login  />} />
@@ -19,6 +21,7 @@ const App: React.FC = () => {
         <Route path="*" element={<Navigate to="/dashboard" />} />
       </Routes>
       </TaskProvider>
+      </ModalProvider>
     </Router>
   );
 };
