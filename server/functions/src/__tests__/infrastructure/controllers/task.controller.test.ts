@@ -1,11 +1,10 @@
-import { describe, it, beforeEach, expect } from "@jest/globals";
-import { jest } from "@jest/globals";
-import { getMockReq, getMockRes } from "@jest-mock/express";
-import { Request } from "express";
+import {describe, it, beforeEach, expect, jest} from "@jest/globals";
+import {getMockReq, getMockRes} from "@jest-mock/express";
+import {Request} from "express";
 
-import { TaskController } from "../../../infrastructure/controllers/task.controller";
-import { ITaskUseCase } from "../../../domain/usecases/task.usecase";
-import { ITask } from "../../../domain/models/task";
+import {TaskController} from "../../../infrastructure/controllers/task.controller";
+import {ITaskUseCase} from "../../../domain/usecases/task.usecase";
+import {ITask} from "../../../domain/models/task";
 
 describe("TaskController", () => {
   let mockTaskService: jest.Mocked<ITaskUseCase>;
@@ -23,7 +22,7 @@ describe("TaskController", () => {
       remove: jest.fn(),
     } as jest.Mocked<ITaskUseCase>;
     serviceInjection = () => mockTaskService;
-    ({ res, next } = getMockRes());
+    ({res, next} = getMockRes());
   });
 
   describe("create", () => {
@@ -35,7 +34,7 @@ describe("TaskController", () => {
 
       mockReq = getMockReq({
         body: task,
-        params: { userId: "1", id: "" },
+        params: {userId: "1", id: ""},
       }) as Request<{ userId: string; id: string }>;
       mockTaskService.create.mockResolvedValueOnce(undefined);
 
@@ -46,10 +45,10 @@ describe("TaskController", () => {
 
   describe("findAll", () => {
     it("should return all tasks", async () => {
-      mockReq = getMockReq({ params: { userId: "1", id: "" } }) as Request<{ userId: string; id: string }>;
+      mockReq = getMockReq({params: {userId: "1", id: ""}}) as Request<{ userId: string; id: string }>;
       const tasks: ITask[] = [
-        { id: "1", title: "task1", description: "description", createdAt: new Date("2023-01-01") },
-        { id: "2", title: "task2", description: "description", createdAt: new Date("2023-01-02") },
+        {id: "1", title: "task1", description: "description", createdAt: new Date("2023-01-01")},
+        {id: "2", title: "task2", description: "description", createdAt: new Date("2023-01-02")},
       ];
       mockTaskService.findAll.mockResolvedValue(tasks);
 
@@ -62,8 +61,8 @@ describe("TaskController", () => {
 
   describe("findOne", () => {
     it("should return a task", async () => {
-      mockReq = getMockReq({ params: { userId: "1", id: "1" } }) as Request<{ userId: string; id: string }>;
-      const task: ITask = { id: "1", title: "task1", description: "description", createdAt: new Date("2023-01-01") };
+      mockReq = getMockReq({params: {userId: "1", id: "1"}}) as Request<{ userId: string; id: string }>;
+      const task: ITask = {id: "1", title: "task1", description: "description", createdAt: new Date("2023-01-01")};
       mockTaskService.findOne.mockResolvedValue(task);
 
       await TaskController.findOne(mockReq, res, next, serviceInjection);
@@ -74,10 +73,10 @@ describe("TaskController", () => {
   });
   describe("update", () => {
     it("should update a task successfully", async () => {
-      const task: ITask = { title: "Updated Task", description: "Updated Description" };
+      const task: ITask = {title: "Updated Task", description: "Updated Description"};
       mockReq = getMockReq({
         body: task,
-        params: { userId: "1", id: "1" },
+        params: {userId: "1", id: "1"},
       }) as Request<{ userId: string; id: string }>;
       mockTaskService.update.mockResolvedValue(task);
 
@@ -90,8 +89,8 @@ describe("TaskController", () => {
 
   describe("remove", () => {
     it("should remove a task successfully", async () => {
-      mockReq = getMockReq({ params: { userId: "1", id: "1" } }) as Request<{ userId: string; id: string }>;
-      const task: ITask = { title: "Deleted Task", description: "Deleted Description" };
+      mockReq = getMockReq({params: {userId: "1", id: "1"}}) as Request<{ userId: string; id: string }>;
+      const task: ITask = {title: "Deleted Task", description: "Deleted Description"};
       mockTaskService.remove.mockResolvedValue(task);
 
       await TaskController.remove(mockReq, res, next, serviceInjection);

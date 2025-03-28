@@ -1,19 +1,17 @@
-import { IUserUseCase } from "../../../domain/usecases/user.usecase";
-import { IUser } from "../../../domain/models/user";
-import { describe, it, beforeEach, expect } from "@jest/globals";
-import { jest } from "@jest/globals";
-import { getMockReq, getMockRes } from "@jest-mock/express";
-import { UserController } from "../../../infrastructure/controllers/user.controller";
-import { Error } from "../../../domain/errors/base-error";
- 
+import {IUserUseCase} from "../../../domain/usecases/user.usecase";
+import {IUser} from "../../../domain/models/user";
+import {describe, it, beforeEach, expect, jest} from "@jest/globals";
+import {getMockReq, getMockRes} from "@jest-mock/express";
+import {UserController} from "../../../infrastructure/controllers/user.controller";
+import {Error} from "../../../domain/errors/base-error";
+
 
 describe("UserController", () => {
   let mockUserService: jest.Mocked<IUserUseCase>;
   let serviceInjection: () => IUserUseCase;
   let mockReq;
-  
+
   beforeEach(() => {
-    
     mockUserService = {
       create: jest.fn(),
       findUserByEmail: jest.fn(),
@@ -22,18 +20,18 @@ describe("UserController", () => {
   });
 
   describe("create", () => {
-    const { res, next } = getMockRes({
+    const {res, next} = getMockRes({
       json: jest.fn() as any,
       status: jest.fn().mockReturnThis(),
     });
 
     it("should create a user and return user data", async () => {
       mockReq = getMockReq({
-        body: { name: "John Doe", email: "john@gmail.com" },
+        body: {name: "John Doe", email: "john@gmail.com"},
       });
 
       mockUserService.create.mockResolvedValueOnce(undefined);
-      const mockUser = { email: "john@gmail.com", name: "John Doe" } as IUser;
+      const mockUser = {email: "john@gmail.com", name: "John Doe"} as IUser;
       mockUserService.findUserByEmail.mockResolvedValueOnce(mockUser);
 
       await UserController.create(mockReq, res, next, serviceInjection);
@@ -47,7 +45,7 @@ describe("UserController", () => {
 
     it("should call next with UserNotCreatedError if user is not found after creation", async () => {
       mockReq = getMockReq({
-        body: { name: "John Doe", email: "john@gmail.com" },
+        body: {name: "John Doe", email: "john@gmail.com"},
       });
 
       mockUserService.create.mockResolvedValueOnce(undefined);
@@ -62,13 +60,13 @@ describe("UserController", () => {
   });
 
   describe("findOne", () => {
-    const { res, next } = getMockRes({
+    const {res, next} = getMockRes({
       json: jest.fn() as any,
       status: jest.fn().mockReturnThis(),
     });
 
     it("should find a user and return user data", async () => {
-      mockReq = getMockReq({ params: { email: "test@example.com" } });
+      mockReq = getMockReq({params: {email: "test@example.com"}});
 
       const mockUser = {
         email: "test@example.com",
@@ -88,7 +86,7 @@ describe("UserController", () => {
     });
 
     it("should call next with UserNotFoundError if user is not found", async () => {
-      mockReq = getMockReq({ params: { email: "nonexistent@example.com" } });
+      mockReq = getMockReq({params: {email: "nonexistent@example.com"}});
       mockUserService.findUserByEmail.mockResolvedValueOnce(undefined);
 
       await UserController.findOne(mockReq, res, next, serviceInjection);

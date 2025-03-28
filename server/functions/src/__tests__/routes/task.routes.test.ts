@@ -1,9 +1,9 @@
 import request from "supertest";
 import express from "express";
 import taskApp from "../../infrastructure/routes/task.routes";
-import { TaskController } from "../../infrastructure/controllers/task.controller";
+import {TaskController} from "../../infrastructure/controllers/task.controller";
 
- 
+
 jest.mock("../../infrastructure/controllers/task.controller");
 
 describe("Task Routes", () => {
@@ -18,8 +18,8 @@ describe("Task Routes", () => {
   describe("GET /:userId/tasks", () => {
     it("should return all tasks for a user", async () => {
       const mockTasks = [
-        { id: "1", title: "Task 1", description: "Description 1" },
-        { id: "2", title: "Task 2", description: "Description 2" },
+        {id: "1", title: "Task 1", description: "Description 1"},
+        {id: "2", title: "Task 2", description: "Description 2"},
       ];
       (TaskController.findAll as jest.Mock).mockImplementationOnce((req, res) =>
         res.json(mockTasks)
@@ -34,7 +34,7 @@ describe("Task Routes", () => {
 
   describe("GET /:userId/tasks/:id", () => {
     it("should return a single task by ID", async () => {
-      const mockTask = { id: "1", title: "Task 1", description: "Description 1" };
+      const mockTask = {id: "1", title: "Task 1", description: "Description 1"};
       (TaskController.findOne as jest.Mock).mockImplementationOnce((req, res) =>
         res.json(mockTask)
       );
@@ -48,32 +48,32 @@ describe("Task Routes", () => {
 
   describe("POST /:userId/tasks", () => {
     it("should create a new task", async () => {
-      const newTask = { title: "New Task", description: "New Description" };
+      const newTask = {title: "New Task", description: "New Description"};
       (TaskController.create as jest.Mock).mockImplementationOnce((req, res) =>
-        res.status(201).json({ id: "1", ...newTask })
+        res.status(201).json({id: "1", ...newTask})
       );
 
       const response = await request(app)
         .post("/123/tasks")
         .send(newTask);
       expect(response.status).toBe(201);
-      expect(response.body).toEqual({ id: "1", ...newTask });
+      expect(response.body).toEqual({id: "1", ...newTask});
       expect(TaskController.create).toHaveBeenCalledTimes(1);
     });
   });
 
   describe("PUT /:userId/tasks/:id", () => {
     it("should update an existing task", async () => {
-      const updatedTask = { title: "Updated Task", description: "Updated Description" };
+      const updatedTask = {title: "Updated Task", description: "Updated Description"};
       (TaskController.update as jest.Mock).mockImplementationOnce((req, res) =>
-        res.json({ id: "1", ...updatedTask })
+        res.json({id: "1", ...updatedTask})
       );
 
       const response = await request(app)
         .put("/123/tasks/1")
         .send(updatedTask);
       expect(response.status).toBe(200);
-      expect(response.body).toEqual({ id: "1", ...updatedTask });
+      expect(response.body).toEqual({id: "1", ...updatedTask});
       expect(TaskController.update).toHaveBeenCalledTimes(1);
     });
   });

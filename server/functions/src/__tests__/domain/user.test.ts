@@ -1,5 +1,5 @@
-import { IUser } from "../../domain/models/user";   
-import { describe, it, expect } from "@jest/globals";
+import {IUser} from "../../domain/models/user";
+import {describe, it, expect} from "@jest/globals";
 
 describe("IUser Interface", () => {
   it("should create a valid user object", () => {
