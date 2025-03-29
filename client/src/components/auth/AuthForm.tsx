@@ -1,15 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
+import { AuthFormProps } from "../../utils/types";
 import { Card, CardContent } from "components/ui/card";
 import { Button } from "components/ui/button";
 import { Input } from "components/ui/input";
 import { Label } from "components/ui/label";
  
-
-interface AuthFormProps {
-  type: "login" | "register";
-  onSubmit: (email: string) => void;
-}
 
 const AuthForm = ({ type, onSubmit }: AuthFormProps) => {
   const [email, setEmail] = useState("");

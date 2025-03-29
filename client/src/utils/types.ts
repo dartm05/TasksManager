@@ -16,6 +16,12 @@ export type User = {
     email: string;
 };
 
+// AuthForm.tsx
+export interface AuthFormProps {
+  type: "login" | "register";
+  onSubmit: (email: string) => void;
+}
+
 // TaskForm.tsx
 export interface TaskFormProps {
   onClose: () => void;
