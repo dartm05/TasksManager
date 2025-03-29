@@ -34,6 +34,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, handleDelete }) => {
       <button
         onClick={() => handleDelete(task.id)}
         className="absolute -top-2 -right-2 text-white hover:text-black transition"
+        aria-label="Delete"
       >
         <CircleX fill="red" className="w-7 h-7" />
       </button>

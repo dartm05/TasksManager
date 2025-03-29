@@ -15,6 +15,7 @@ const TaskView: React.FC<{ task: TaskItemProps["task"]; handleEdit: () => void }
         <button
           onClick={handleEdit}
           className="text-sm text-yellow-600 hover:underline"
+          aria-label="Edit"
         >
           <Pencil />
         </button>
